@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/bin/salt-master -d
+/usr/bin/salt-minion
