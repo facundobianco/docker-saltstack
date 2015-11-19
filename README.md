@@ -2,12 +2,20 @@
 
 This docker installs the last stable version (2015.8.1) of SaltStack.
 
+Also, you can install the old stable version (2015.5.3) from SaltStack's
+repository, just uncomment this line
+
+```
+#ENV MVER 2015.5.3+ds-1~bpo8+1
+```
+
 ### Plus
 
 * Installs master and minion.
 * Configure minion.
-* Installs [mg](http://homepage.boetes.org/software/mg) instead of vi.
 * You can define which version of SaltStack should be installed.
+* Installs [mg](http://homepage.boetes.org/software/mg) instead of vi.
+* Force IPv4.
 
 ## How to use this container
 
