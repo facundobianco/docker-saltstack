@@ -3,8 +3,10 @@ MAINTAINER Facundo Bianco < vando [at] van [dot] do >
 
 #ENV MVER 2015.5.3+ds-1~bpo8+1
 ENV TERM xterm
+ENV PATH $PATH:/usr/local/sbin:/usr/local/bin
 
-COPY saltstack.run /root/
+COPY bin/* /usr/local/bin/
+RUN find /usr/local/bin -type f -not -executable -exec chmod +x {} \;
 
 RUN echo 'Acquire::ForceIPv4 "true";' > /etc/apt/apt.conf.d/99force-ipv4
 
@@ -26,5 +28,4 @@ RUN sed -i 's/^#master: salt/master: 127.0.0.1/;s/^#id:/id: minion/' /etc/salt/m
 RUN mkdir /srv/salt /srv/pillar
 RUN chmod 0700 /srv/pillar
 
-RUN chmod +x /root/saltstack.run
-CMD ["/root/saltstack.run"]
+CMD ["/usr/local/bin/saltstack.run"]
