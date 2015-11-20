@@ -35,4 +35,6 @@ RUN sed -i 's/^#master: salt/master: 127.0.0.1/;s/^#id:/id: minion/' /etc/salt/m
 RUN mkdir /srv/salt /srv/pillar
 RUN chmod 0700 /srv/pillar
 
+EXPOSE 4505 4506
+VOLUME ["/srv/salt", "/srv/pillar"]
 CMD ["/usr/local/bin/saltstack.run"]

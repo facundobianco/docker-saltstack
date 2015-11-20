@@ -25,7 +25,7 @@ On this directory, build and lauch the container
 
 ```
 docker build -t saltstack .
-docker run -d --name saltstack saltstack
+docker run -d -p 4505:4505 -p 4506:4506 --name saltstack saltstack
 ```
 
 Connect to container
