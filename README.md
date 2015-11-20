@@ -15,7 +15,8 @@ SaltStack's repository, just uncomment this line
 * Installs master and minion.
 * Configures minion.
 * You can define which version of SaltStack should be installed.
-* Installs [mg](http://homepage.boetes.org/software/mg) instead of vi.
+* Installs an emacs-like: [mg](http://homepage.boetes.org/software/mg).
+* Installs vim with [plugins](https://github.com/saltstack/salt-vim) for SaltStack.
 * Forces IPv4.
 
 ## How to use this container

@@ -5,6 +5,13 @@ MAINTAINER Facundo Bianco < vando [at] van [dot] do >
 ENV TERM xterm
 ENV PATH $PATH:/usr/local/sbin:/usr/local/bin
 
+ADD https://raw.githubusercontent.com/saltstack/salt-vim/master/ftdetect/sls.vim /root/.vim/ftdetect/
+ADD https://raw.githubusercontent.com/saltstack/salt-vim/master/ftplugin/sls.vim /root/.vim/ftplugin/
+ADD https://raw.githubusercontent.com/saltstack/salt-vim/master/syntax/sls.vim /root/.vim/syntax/
+
+COPY conf/vimrc /root/.vimrc
+COPY conf/mg /root/.mg
+
 COPY bin/* /usr/local/bin/
 RUN find /usr/local/bin -type f -not -executable -exec chmod +x {} \;
 
@@ -22,7 +29,7 @@ RUN if [ -z "$MVER" ] ; \
     fi
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    salt-master=${MVER:-2015.8.1+ds-2} salt-minion=${MVER:-2015.8.1+ds-2} mg
+    salt-master=${MVER:-2015.8.1+ds-2} salt-minion=${MVER:-2015.8.1+ds-2} mg vim
 
 RUN sed -i 's/^#master: salt/master: 127.0.0.1/;s/^#id:/id: minion/' /etc/salt/minion
 RUN mkdir /srv/salt /srv/pillar
