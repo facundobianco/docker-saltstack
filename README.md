@@ -17,7 +17,7 @@ SaltStack's repository, just uncomment this line
 * You can define which version of SaltStack should be installed.
 * Installs an emacs-like: [mg](http://homepage.boetes.org/software/mg).
 * Installs vim with [plugins](https://github.com/saltstack/salt-vim) for SaltStack.
-* Forces IPv4.
+* Forces IPv4 for APT.
 
 ## How to use this container
 
