@@ -36,14 +36,6 @@ docker exec -it saltstack /bin/bash
 
 ## SaltStack first steps
 
-Inside the container, accept the minion's request
-
-```
-salt-key -yA
-```
-
-Test it
-
 ```
 salt 'minion' test.ping
 ```

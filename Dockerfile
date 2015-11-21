@@ -32,6 +32,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     salt-master=${MVER:-2015.8.1+ds-2} salt-minion=${MVER:-2015.8.1+ds-2} mg vim
 
 RUN sed -i 's/^#master: salt/master: 127.0.0.1/;s/^#id:/id: minion/' /etc/salt/minion
+RUN salt-master -d && salt-minion -d && while(true) ; do salt-key -yA && break || sleep 15 ; done
+
 RUN mkdir /srv/salt /srv/pillar
 RUN chmod 0700 /srv/pillar
 
