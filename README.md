@@ -7,7 +7,7 @@ Also, you can install the old stable version (2015.5.3) from
 SaltStack's repository, just uncomment this line
 
 ```
-#ENV MVER 2015.5.3+ds-1~bpo8+1
+#ARG MVER 2015.5.3+ds-1~bpo8+1
 ```
 
 ### Plus

@@ -1,7 +1,7 @@
 FROM debian:8.2
 MAINTAINER Facundo Bianco < vando [at] van [dot] do >
 
-#ENV MVER 2015.5.3+ds-1~bpo8+1
+#ARG MVER 2015.5.3+ds-1~bpo8+1
 ENV TERM xterm
 ENV PATH $PATH:/usr/local/sbin:/usr/local/bin
 
