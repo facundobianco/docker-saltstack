@@ -1,13 +1,13 @@
-# Docker container for SaltStack 8.1
+# Docker container for SaltStack 8.5
 
-This docker installs the lastest stable version (2015.8.1) of
+This docker installs the lastest stable version (2015.8.5) of
 SaltStack.
 
 Also, you can install the old stable version (2015.5.3) from
-SaltStack's repository, just uncomment this line
+SaltStack's repository, just modify this line like
 
 ```
-#ARG MVER 2015.5.3+ds-1~bpo8+1
+ENV MVER 2015.5.3+ds-1~bpo8+1
 ```
 
 ### Plus
@@ -19,18 +19,26 @@ SaltStack's repository, just uncomment this line
 * Installs vim with [plugins](https://github.com/saltstack/salt-vim) for SaltStack.
 * Forces IPv4 for APT.
 
-## How to use this container
+## How to build
 
 On this directory, build and lauch the container
 
 ```
 docker build -t saltstack .
+```
+
+Also, you can pull this container from Docker Hub
+
+```
+docker pull vando/saltstack
+```
+
+## Connect to container
+
+Start the container
+
+```
 docker run -d -p 4505:4505 -p 4506:4506 --name saltstack saltstack
-```
-
-Connect to container
-
-```
 docker exec -it saltstack /bin/bash
 ```
 
