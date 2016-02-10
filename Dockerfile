@@ -13,14 +13,15 @@ ADD https://raw.githubusercontent.com/saltstack/salt-vim/master/syntax/sls.vim /
 ADD conf/vimrc /root/.vimrc
 ADD conf/mg /root/.mg
 
+ADD 0xF2AE6AB9.asc /tmp/0xF2AE6AB9.asc
+RUN apt-key add /tmp/0xF2AE6AB9.asc
+RUN rm /tmp/0xF2AE6AB9.asc
+
 ADD bin/* /usr/local/bin/
 RUN find /usr/local/bin -type f -not -executable -exec chmod +x {} \;
 
-RUN echo 'Acquire::ForceIPv4 "true";' > /etc/apt/apt.conf.d/99force-ipv4
-
 RUN echo "deb http://httpredir.debian.org/debian/ sid main" > /etc/apt/sources.list.d/sid.list 
 RUN echo "deb http://debian.saltstack.com/debian jessie-saltstack main" > /etc/apt/sources.list.d/saltstack.list
-RUN wget -qO - 'http://pgp.surfnet.nl:11371/pks/lookup?op=get&search=0xF2AE6AB9' | sed -n '/BEGIN/,/END/p' | apt-key add -
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     salt-master=${MVER} salt-minion=${MVER} mg vim-tiny
