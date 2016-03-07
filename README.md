@@ -1,4 +1,4 @@
-# Docker container for SaltStack 8.5
+# Docker container for SaltStack 8.3
 
 This docker installs the lastest stable version (2015.8.3) of SaltStack.
 
