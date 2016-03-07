@@ -1,33 +1,17 @@
 # Docker container for SaltStack 8.5
 
-This docker installs the lastest stable version (2015.8.5) of
-SaltStack.
+This docker installs the lastest stable version (2015.8.3) of SaltStack.
 
-Also, you can install the old stable version (2015.5.3) from
-SaltStack's repository, just modify this line like
+The previous container was [based on Debian 8.2](Dockerfile.deb) (118 MB) and this release is based on Alpine (91.82 MB).
 
-```
-ENV MVER 2015.5.3+ds-1~bpo8+1
-```
-
-### Plus
+## Plus
 
 * Installs master and minion.
 * Configures minion.
-* You can define which version of SaltStack should be installed.
-* Installs an emacs-like: [mg](http://homepage.boetes.org/software/mg).
-* Installs vim with [plugins](https://github.com/saltstack/salt-vim) for SaltStack.
-* Forces IPv4 for APT.
 
-## How to build
+## How to get it
 
-On this directory, build and lauch the container
-
-```
-docker build -t saltstack .
-```
-
-Also, you can pull this container from Docker Hub
+You can pull this container from Docker Hub
 
 ```
 docker pull vando/saltstack
@@ -38,8 +22,8 @@ docker pull vando/saltstack
 Start the container
 
 ```
-docker run -d -p 4505:4505 -p 4506:4506 --name saltstack saltstack
-docker exec -it saltstack /bin/bash
+docker run -d -p 4505:4505 -p 4506:4506 --name saltstack vando/saltstack
+docker exec -it saltstack sh
 ```
 
 ## SaltStack first steps
