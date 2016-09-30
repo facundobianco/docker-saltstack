@@ -1,5 +1,8 @@
 # Docker container for SaltStack 8.3
 
+[![](https://images.microbadger.com/badges/image/vando/saltstack.svg)](https://microbadger.com/images/vando/saltstack "Get your own image badge on microbadger.com") 
+[![](https://images.microbadger.com/badges/version/vando/saltstack.svg)](https://microbadger.com/images/vando/saltstack "Get your own version badge on microbadger.com")
+
 This docker installs the lastest stable version (2015.8.3) of SaltStack.
 
 The previous container was [based on Debian 8.2](Dockerfile.deb) (118 MB) and this release is based on Alpine (91.82 MB).
