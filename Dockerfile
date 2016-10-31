@@ -22,7 +22,7 @@ RUN apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/community py2-
     salt-master \
     salt-minion 
 
-RUN mkdir -p /srv/salt /srv/pillar
+RUN mkdir -p /srv/salt /srv/pillar \
     && chmod 0700 /srv/pillar \
     && chmod +x /usr/local/bin/saltstack.run
 
