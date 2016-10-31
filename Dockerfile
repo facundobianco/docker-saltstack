@@ -23,12 +23,10 @@ RUN apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/community py2-
     salt-minion 
 
 RUN mkdir -p /srv/salt /srv/pillar
-RUN chmod 0700 /srv/pillar \
+    && chmod 0700 /srv/pillar \
     && chmod +x /usr/local/bin/saltstack.run
 
 RUN salt-master -d && salt-minion -d && while(true) ; do salt-key -yA && break || sleep 15 ; done
-
-
 
 EXPOSE 4505 4506 
 VOLUME ["/srv/salt", "/srv/pillar"] 
