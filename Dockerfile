@@ -1,20 +1,32 @@
-FROM alpine:3.3
-MAINTAINER Facundo Bianco <vando@van.do>
+FROM alpine:3.4
+MAINTAINER curratore <frodriguezd@gmail.com>
 
-ENV TERM xterm
+COPY master /etc/salt/master
+COPY minion /etc/salt/minion
+COPY saltstack.run /usr/local/bin/saltstack.run
 
-RUN apk add --no-cache python py-crypto py-jinja2 py-tornado py-yaml
-RUN apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/testing py-msgpack py-zmq salt
+RUN apk update && \
+    apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/main python2 \
+    py2-crypto \
+    py2-jinja2 \ 
+    py2-tornado \
+    py2-yaml \
+    py2-cffi \
+    py2-six \
+    py2-requests \
+    py2-dateutil
 
-RUN mkdir -p /srv/salt /srv/pillar
-RUN chmod 0700 /srv/pillar
+RUN apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/community py2-msgpack \ 
+    py2-zmq \ 
+    salt \
+    salt-master \
+    salt-minion 
 
-RUN sed -i 's/^#master: salt/master: 127.0.0.1/;s/^#id:/id: minion/' /etc/salt/minion
-RUN sed -i 's/^#worker_threads: 5/worker_threads: 20/' /etc/salt/master
+RUN mkdir -p /srv/salt /srv/pillar \
+    && chmod 0700 /srv/pillar \
+    && chmod +x /usr/local/bin/saltstack.run
+
 RUN salt-master -d && salt-minion -d && while(true) ; do salt-key -yA && break || sleep 15 ; done
-
-ADD saltstack.run /usr/local/bin/saltstack.run
-RUN chmod +x /usr/local/bin/saltstack.run
 
 EXPOSE 4505 4506 
 VOLUME ["/srv/salt", "/srv/pillar"] 
